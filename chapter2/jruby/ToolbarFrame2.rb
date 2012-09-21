@@ -14,10 +14,9 @@ java_import java.lang.System
 
 # import java class
 # java_import 'LnFListener'
+require 'lnflistener'
 
 class ToolbarFrame2 < Frame
-
-	extend LnFListener
 
 	def initialize()
 		super("Toolbar Example (Swing)")
