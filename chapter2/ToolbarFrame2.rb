@@ -12,6 +12,7 @@ java_import java.awt.event.ActionListener
 java_import java.awt.event.WindowAdapter
 java_import java.lang.System
 
+java_import 'LnFListener'
 
 class ToolbarFrame2 < Frame
 
@@ -37,6 +38,29 @@ class ToolbarFrame2 < Frame
 		toolbar.add(paste)
 
 		add(toolbar, BorderLayout::NORTH)
+
+		# Add the L&F controls.
+		lnfPanel = JPanel.new
+		lnfListener = LnFListener.new(self)
+
+		macButton = JButton.new('Mac')
+		macButton.addActionListener(lnfListener)
+		lnfPanel.add(macButton)
+
+		javaButton = JButton.new('Metal')
+		javaButton.addActionListener(lnfListener)
+		lnfPanel.add(javaButton)
+		
+		motifButton = JButton.new('Motif')
+		motifButton.addActionListener(lnfListener)
+		lnfPanel.add(motifButton)
+		
+		winButton = JButton.new('Windows')
+		winButton.addActionListener(lnfListener)
+		lnfPanel.add(winButton)
+
+		add(lnfPanel, BorderLayout::SOUTH)
+		
 	end
 
   class WindowCloser < WindowAdapter
